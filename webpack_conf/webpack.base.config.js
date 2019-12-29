@@ -40,6 +40,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }, {
         test: /\.sass$/,
         use: [
           'style-loader',
@@ -56,10 +65,6 @@ module.exports = {
           },
         ],
         exclude: /node_modules/
-      }, {
-        test: /\.ts?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
       }, {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
